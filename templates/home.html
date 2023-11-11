@@ -1,0 +1,110 @@
+{% extends "template.html" %} {% block title %} Home Page {% endblock %} {% block headers %}
+<meta property="og:title" content="Bank /// Home" />
+<meta property="og:url" content="http://demo.amitoj.net/bank/" />
+<meta property="og:image" content="http://demo.amitoj.net/bank/static/logo.png" /> {% endblock %} {% block body %}
+<div
+    style="background-image: url(http://drive.google.com/uc?id=1k6Zma41RAWNb4yCaGGm4F78bZYVpMG24);background-repeat: repeat-x;background-size: cover;background-position: center;">
+    {% with msg = get_flashed_messages(with_categories=true) %} {% if msg %} {% for cat, msg in msg %}
+    <div class="alert alert-{{cat}} alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <div style="height: 100%;width: 100%;">
+        <div style="height: 50px;"></div>
+
+        <div style="height: 400px; width: 40%;" class="slideshow-home">
+            <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" style="height: inherit;">
+                        <!--<img src="http://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" class="d-block h-adaptive" alt="1">-->
+                        <img src="http://demo.amitoj.net/bank/static/home/slide-1.jpg" class="d-block h-adaptive"
+                            alt="1">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Claim Your Credit Card</h5>
+                            <p>lay claim to our credit card services and get some exciting offers </p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="height: inherit;">
+                        <!--<img src="http://images.pexels.com/photos/1602726/pexels-photo-1602726.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" class="d-block h-adaptive" alt="2">-->
+                        <img src="http://demo.amitoj.net/bank/static/home/slide-2.jpg" class="d-block h-adaptive"
+                            alt="2">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Keep Your Saving Safe!!</h5>
+                            <p>Safeguard your savings with the word class services we provide</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="height: inherit;">
+                        <!--<img src="http://images.pexels.com/photos/259249/pexels-photo-259249.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" class="d-block h-adaptive" alt="3">-->
+                        <img src="http://demo.amitoj.net/bank/static/home/slide-3.jpg" class="d-block h-adaptive"
+                            alt="3">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Get A Loan</h5>
+                            <p>Our Bank Offers Loans On Low Interest</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="spacer" style="height: 80px;"></div>
+        <div class="home-stuff">
+            <div class="container">
+                <div class="row" style="background-color: #303f51;border-radius: 15px;padding: 10px;">
+                    <div class="col-sm">
+                        <a class="a-home" href="/login">
+                            <span class="material-icons font-16">
+                                payments
+                            </span> Take A Loan
+                        </a>
+                    </div>
+                    <div class="col-sm">
+
+                        <a class="a-home" href="/login">
+                            <span class="material-icons font-16">
+                                local_atm
+                            </span> Net Banking
+
+                        </a>
+                    </div>
+                    <div class="col-sm">
+                        <a class="a-home" href="/login">
+                            <span class="material-icons font-16">
+                                credit_card
+                            </span> Apply For A Credit Card
+                        </a>
+                    </div>
+                    <div class="col-sm">
+                        <a class="a-home" href="/login">
+                            <span class="material-icons font-16">
+                                verified_user
+                            </span> Insurance
+                        </a>
+                    </div>
+                    <div class="col-sm">
+                        <a class="a-home" href="/login">
+                            <span class="material-icons font-16">
+                                account_balance_wallet
+                            </span> Open A Savings Accounts
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

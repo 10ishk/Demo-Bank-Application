@@ -1,0 +1,64 @@
+{% extends "template.html" %} {% block title %} Bank >>> Account {% endblock %} {% block headers %}
+<style>
+    body {
+        color: #b6b6c6;
+    }
+</style>
+<meta property="og:title" content="Bank >>> Account" />
+<meta property="og:image" content="http://demo.amitoj.net/bank/static/logo.png" />
+<meta property="og:description" content="Welcome To Mock Bank!; Created By: Amitoj, Tanishk, Darshil" /> {% endblock %}
+{% block body %} {% with msg = get_flashed_messages(with_categories=true) %} {% if msg %} {% for cat, msg in msg %}
+<div class="alert alert-{{cat}} alert-dismissible fade show" role="alert">
+    <strong>{{msg}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %} {% endif %} {% endwith %}
+<script src="http://demo.amitoj.net/bank/static/collapse.js"></script>
+<h3>Session Page Loaded</h3><br>
+<p>Name: {{session['name']}}</p>
+<p>Email: {{session['email']}}</p>
+<p>User ID: {{session['uid']}}</p>
+<p>Account No.: {{session['accno']}}</p>
+<p>Account Balance: {{session['accbal']}} USD</p>
+<div class="basic-grid">
+    <div class="card-session">
+        <button class="card-session-btn" onclick="toggleCollapse('transfer-collapse')">
+            Transfer
+        </button>
+        <div id="transfer-collapse" class="session-collapse" data-collapsed="true"
+            style="height: 0px; font-size: xx-large;">
+            <button class="inner-card-btn" onclick="window.location='/session/b2btransfer'">Within Bank
+                Transfer</button>
+            <button class="inner-card-btn" onclick="window.location='/session/localtransfer'">Local Bank
+                Transfer</button>
+            <button class="inner-card-btn" onclick="window.location='/session/internationaltransfer'">International
+                Transfer</button>
+        </div>
+    </div>
+    <div class="card-session">
+        <button class="card-session-btn" onclick="toggleCollapse('b2btransfer-collapse')">
+            Services
+        </button>
+        <div id="b2btransfer-collapse" class="session-collapse" data-collapsed="true"
+            style="height: 0px; font-size: xx-large;">
+            <button class="inner-card-btn" onclick="window.location='/session/loan'">Loan</button>
+            <button class="inner-card-btn" onclick="window.location='/session/history'">Bank Transfer Statement</button>
+            <button class="inner-card-btn" onclick="window.location='/session/delete'">Delete your account</button>
+        </div>
+    </div>
+
+    <div class="card-session" onclick="toggleCollapse('nri-collapse')">
+        <button class="card-session-btn">
+            NRI
+        </button>
+        <div id="nri-collapse" class="session-collapse" data-collapsed="true" style="height: 0px; font-size: xx-large;">
+            <button class="inner-card-btn" onclick="window.location='/session/nri'">Open NRI account</button>
+            <!-- <button class="inner-card-btn" onclick="window.location='/session/smtg'">Account Status</button> -->
+            <button class="inner-card-btn" onclick="window.location='/session/nriterms'">NRI terms and
+                conditions</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

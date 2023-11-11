@@ -1,0 +1,10 @@
+{% extends "template.html" %} {% block title %} Bank >>> {{uname}} {% endblock %} {% block headers %}
+<meta property="og:title" content="Bank >>> {{uname}}" />
+<meta property="og:image" content="http://demo.amitoj.net/bank/static/logo.png" />
+<meta property="og:description" content="{{uname}} Is On Mock Bank! ; Created By: Amitoj, Tanishk, Darshil" /> {%
+endblock %} {% block body %}
+
+<h3>User Page Loaded</h3><br>
+<p>Hello {{uname}}!</p>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "template.html" %} {% block title %} Bank >>> Account {% endblock %} {% block headers %}
+<style>
+    body {
+        color: #b6b6c6;
+    }
+</style>
+<meta property="og:title" content="Bank >>> Transfers" />
+<meta property="og:image" content="http://demo.amitoj.net/bank/static/logo.png" />
+<meta property="og:description" content="Welcome To Mock Bank!; Created By: Amitoj, Tanishk, Darshil" /> {% endblock %}
+{% block body %} {% with msg = get_flashed_messages(with_categories=true) %} {% if msg %} {% for cat, msg in msg %}
+<div class="alert alert-{{cat}} alert-dismissible fade show" role="alert">
+    <strong>{{msg}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %} {% endif %} {% endwith %}
+<script src="http://demo.amitoj.net/bank/static/collapse.js"></script>
+<h3>Transfer History Loaded</h3><br>
+<p>Name: {{session['name']}}</p>
+<p>Email: {{session['email']}}</p>
+<p>User ID: {{session['uid']}}</p>
+<p>Account No.: {{session['accno']}}</p>
+<p>Current Balance: {{session['accbal']}} USD</p>
+<div>
+
+    <div id="history-cont" style="height: 100%;">
+        {% for i in history %}
+        <div class="card-session" style="font-size: medium; padding: 10px; margin: 10px; width: 75%;">
+            <span class="material-icons"
+                style="display: inline; color: {% if (i['to']==session['accno']) %}green{% else %}red{% endif %};">sync_alt</span>
+            <p style="margin: 0px; display: inline;">Status: {% if (i['to']==session['accno']) %}Recieved{% else
+                %}Sent{% endif %}</p>
+            <p style="margin: 0px; display: inline;">{% if (i['to']==session['accno']) %}Recieved From: {{i['from']}}{%
+                else %}Sent To: {{i['to']}} {% endif %}</p>
+            <p style="margin: 0px; display: inline;">{% if (i['to']==session['accno']) %}Amount Recieved:{% else
+                %}Amount Sent:{% endif %} {{i['amount']}} USD</p>
+            <p style="margin: 0px; display: inline;">Transfer Time: {{i['time']}} ({{i['timestamp']}})</p>
+            <!-- <script>
+                let time = moment({
+                    {
+                        i['time']
+                    }
+                }).calander();
+
+                document.getElementById('transfer-time-{{i['
+                    index ']}}').innerText = time;
+            </script> -->
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+{% endblock %}

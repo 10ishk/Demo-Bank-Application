@@ -1,0 +1,66 @@
+{% extends "template.html" %} {% block title %} Bank >>> Account {% endblock %} {% block headers %}
+<style>
+    body {
+        color: #b6b6c6;
+    }
+</style>
+<meta property="og:title" content="Bank >>> Transfers" />
+<meta property="og:image" content="http://demo.amitoj.net/bank/static/logo.png" />
+<meta property="og:description" content="Welcome To Mock Bank!; Created By: Amitoj, Tanishk, Darshil" /> {% endblock %}
+{% block body %} {% with msg = get_flashed_messages(with_categories=true) %} {% if msg %} {% for cat, msg in msg %}
+<div class="alert alert-{{cat}} alert-dismissible fade show" role="alert">
+    <strong>{{msg}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %} {% endif %} {% endwith %}
+<script src="http://demo.amitoj.net/bank/static/collapse.js"></script>
+<h3>Local Bank Transfer Loaded</h3><br>
+<p>Name: {{session['name']}}</p>
+<p>Email: {{session['email']}}</p>
+<p>User ID: {{session['uid']}}</p>
+<p>Account No.: {{session['accno']}}</p>
+<p>Current Balance: {{session['accbal']}} USD</p>
+<div>
+
+    <div class="card-session centered" style="width: max-content; padding: 10px;">
+        <form action="" method="POST" style="margin-bottom: 0px;">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"
+                        style="background-color: #272a2c;border: 1px solid;"><span class="material-icons"
+                            id="basic-addon1" style="color: #b6bec6;">account_balance</span></span>
+                </div>
+                <input type="number" class="form-control" placeholder="Bank ID" name="bankid" aria-label="Bank ID"
+                    aria-describedby="basic-addon1" style="background-color: #121212;border: 1px solid;">
+            </div>
+            <div style="height: 20px;"></div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"
+                        style="background-color: #272a2c;border: 1px solid;"><span class="material-icons"
+                            id="basic-addon1" style="color: #b6bec6;">account_circle</span></span>
+                </div>
+                <input type="number" class="form-control" placeholder="Account Number" name="accno"
+                    aria-label="Account Number" aria-describedby="basic-addon1"
+                    style="background-color: #121212;border: 1px solid;">
+            </div>
+            <div style="height: 20px;"></div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"
+                        style="background-color: #272a2c;border: 1px solid;"><span class="material-icons"
+                            id="basic-addon1" style="color: #b6bec6;">attach_money</span></span>
+                </div>
+                <input type="number" class="form-control" placeholder="Amount" name="amount" aria-label="Amount"
+                    aria-describedby="basic-addon1" style="background-color: #121212;border: 1px solid;">
+            </div>
+
+            <div style="height: 20px;"></div>
+            <button class="btn-register" type="submit">Transfer</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

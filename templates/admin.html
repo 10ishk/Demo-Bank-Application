@@ -1,0 +1,52 @@
+{% extends "template.html" %} {% block title %} Bank >>> Account {% endblock %} {% block headers %}
+<style>
+    body {
+        color: #b6b6c6;
+    }
+</style>
+<meta property="og:title" content="Bank >>> Account" />
+<meta property="og:image" content="http://demo.amitoj.net/bank/static/logo.png" />
+<meta property="og:description" content="Welcome To Mock Bank!; Created By: Amitoj, Tanishk, Darshil" /> {% endblock %}
+{% block body %} {% with msg = get_flashed_messages(with_categories=true) %} {% if msg %} {% for cat, msg in msg %}
+<div class="alert alert-{{cat}} alert-dismissible fade show" role="alert">
+    <strong>{{msg}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %} {% endif %} {% endwith %}
+{% if session["role"] != "ADMIN" %}
+<script>
+    window.location.href = '/'
+</script>
+{% endif %}
+
+<script src="http://demo.amitoj.net/bank/static/collapse.js"></script>
+<h3>Admin Page Loaded</h3><br>
+
+<div>
+    <script>
+        function approve(loanId, approved) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "/admin/", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                loanId,
+                approved
+            }));
+        }
+    </script>
+    <h4 class="centered" style="padding-top: 20px;">Loans: </h4>
+    {% for i in loans %}
+    <div class="card-session" style="font-size: medium; padding: 10px; margin: 10px; width: 75%;">
+        <p>Name: {{i[4]}} ({{i[3]}})</p>
+        <p>Type: {{i[2]}}</p>
+        <p>Amount: {{i[1]}}</p>
+        <div style="display: inline-block;">
+            <button class="btn btn-outline-success" onclick="approve('{{i[0]}}', true)">Approve</button>
+            <button class="btn btn-outline-danger" onclick="approve('{{i[0]}}', false)">Deny</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

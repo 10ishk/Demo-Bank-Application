@@ -1,0 +1,3 @@
+arrow==1.1.1
+Flask==2.0.1
+mysql_connector_repackaged==0.3.1

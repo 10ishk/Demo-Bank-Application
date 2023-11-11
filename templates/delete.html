@@ -1,0 +1,79 @@
+{% extends "template.html" %} {% block title %} Delete {% endblock %} {% block body %}
+<div
+    style="background-image: url(http://images.unsplash.com/photo-1554672723-b208dc85134f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80);background-repeat: no-repeat;background-size: cover;background-position: center;">
+    {% with msg = get_flashed_messages(with_categories=true) %} {% if msg %} {% for cat, msg in msg %} {% if cat ==
+    'success' %}
+    <script>
+        window.location = '/login?status=register_success';
+    </script>
+    {% else %}
+    <div class="alert alert-{{cat}} alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+    <div style="height: 100%; width: 100%;">
+        <script>
+            function clicked() {
+                document.getElementById("del-btn").className = "delete_button del-btn-pressed"
+                setTimeout(() => {
+                    document.getElementById("del-btn").className = "delete_button"
+                    window.location.href = '/logout';
+                }, 300);
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "/session/delete", true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send();
+            }
+        </script>
+        <div style="height: 20%;"></div>
+        <h3 style="color:white;">Delete Account</h3>
+        <div style="height: 20px;"></div>
+
+        <div style="width: 400px;">
+            <form action="#" method="POST">
+                <div style="height: 20px;"></div>
+                <form action="#" method="POST"></form>
+
+                <button id="del-btn" class="delete_button" onclick="clicked()">Delete</button>
+                <style>
+                    .delete_button {
+                        border-radius: 50%;
+                        width: 200px;
+                        height: 200px;
+                        border: none;
+                        color: white;
+                        font-family: Avenir, Arial, sans-serif;
+                        font-weight: 900;
+                        font-size: 2.5rem;
+                        background: red;
+                        text-shadow: 0 3px 1px rgba(122, 17, 8, .8);
+                        box-shadow: 0 8px 0 rgb(183, 9, 0),
+                            0 15px 20px rgba(0, 0, 0, .35);
+                        text-transform: uppercase;
+                        transition: .3s all ease-in;
+                        outline: none;
+                        cursor: pointer;
+                        text-align: center;
+                    }
+
+                    .delete_button:focus {
+                        outline: none;
+                    }
+
+                    .del-btn-pressed {
+                        box-shadow: 0 0px 0 rgba(0, 0, 0, 0),
+                            0 0px 0px rgba(0, 0, 0, 0) !important;
+                    }
+                </style>
+
+
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

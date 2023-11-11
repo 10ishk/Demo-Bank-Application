@@ -1,0 +1,85 @@
+{% extends "template.html" %} {% block title %} Register {% endblock %} {% block body %}
+<div
+    style="background-image: url(http://demo.amitoj.net/bank/static/registerdingdong.jpg);background-repeat: no-repeat;background-size: cover;background-position: center;">
+    {% with msg = get_flashed_messages(with_categories=true) %} {% if msg %} {% for cat, msg in msg %} {% if cat ==
+    'success' %}
+    <script>
+        window.location = '/login?status=register_success';
+    </script>
+    {% else %}
+    <div class="alert alert-{{cat}} alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+    <div style="height: 20%;"></div>
+    <div style="height: 100%; width: 100%;">
+        <div class="row">
+            <div class="col-sm" style="text-decoration-color: white;">
+                <h3 style="color: white; margin-bottom: 20px;">Why Choose Us ?</h3>
+                <h6 style="color: white;">There is just one simple word that describes our Bank ‘Pre - Eminent’. Banking
+                    here isn’t just a Business its a commitment and matter of Pride and Responsibility. Our Elite group
+                    of professionals are dedicated to providing the best service
+                    available by coordinating with the best Cutting Edge Technology and a great level of intelligence.
+                </h6>
+                <h6 style="color: white;">With assets worth 51.972 trillion dollars we hold a unique stand in the World.
+                    Ranked in the top 3 in the financial sector we always look forward to providing the best customer
+                    service. Our bank currently has a network of 1,158,342 branches
+                    and 2,246,891 ATM’s across the World.</h6>
+                <h6 style="color: white;"> Our Bank offers a wide range of banking products and financial services to
+                    corporate and retail customers through a variety of delivery channels and through its group
+                    companies. We provide new offers and services at a reasonable payment.
+                </h6>
+                <h6 style="color: white;"> …… Bank makes ur banking experience just a child’s play and provides a
+                    trouble-free experience.</h6>
+                <h6 style="color: white;"></h6>
+                <h6 style="color: white;"></h6>
+            </div>
+            <div class="col-sm">
+                <h3 style="color: white;">Join Us</h3>
+                <div style="height: 20px;"></div>
+                <div style="width: 400px; height: 100%;">
+                    <form action="#" method="POST">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"
+                                    style="background-color: #272a2c;border: 1px solid;"><span class="material-icons"
+                                        id="basic-addon1" style="color: #b6bec6;">person</span></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Name" name="uname" aria-label="Name"
+                                aria-describedby="basic-addon1" style="background-color: #121212;border: 1px solid;">
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"
+                                    style="background-color: #272a2c;border: 1px solid;"><span class="material-icons"
+                                        id="basic-addon1" style="color: #b6bec6;">mail</span></span>
+                            </div>
+                            <input type="email" class="form-control" placeholder="Email" name="umail" aria-label="Email"
+                                aria-describedby="basic-addon1" style="background-color: #121212;border: 1px solid;">
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"
+                                    style="background-color: #272a2c;border: 1px solid;"><span class="material-icons"
+                                        id="basic-addon1" style="color: #b6bec6;">lock</span></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="Password" name="upwd"
+                                aria-label="Username" aria-describedby="basic-addon1"
+                                style="background-color: #121212;border: 1px solid;">
+                        </div>
+
+                        <div style="height: 20px;"></div>
+                        <button class="btn-register" type="submit">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

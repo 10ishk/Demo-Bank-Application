@@ -1,0 +1,49 @@
+{% extends "template.html" %} {% block title %} Login {% endblock %} {% block body %}
+<div
+    style="background-image: url(http://demo.amitoj.net/bank/static/logindingdong.jpg);background-repeat: no-repeat;background-size: cover;background-position: center;">
+    {% with msg = get_flashed_messages(with_categories=true) %} {% if msg %} {% for cat, msg in msg %}
+    <div class="alert alert-{{cat}} alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %} {% if session['uid'] %}
+    <script>
+        window.location = '/session/'
+    </script>
+    {% endif %}
+
+    <div style="height: 100%; width: 100%;">
+        <div style="height: 20%;"></div>
+        <h3 style="color: white;">Login</h3>
+        <div style="height: 20px;"></div>
+        <div style="width: 400px;">
+            <form action="#" method="POST">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"
+                            style="background-color: #272a2c;border: 1px solid;"><span class="material-icons"
+                                id="basic-addon1" style="color: #b6bec6;">mail</span></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Email" name="umail" aria-label="Email"
+                        aria-describedby="basic-addon1" style="background-color: #121212;border: 1px solid;">
+                </div>
+                <div style="height: 20px;"></div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"
+                            style="background-color: #272a2c;border: 1px solid;"><span class="material-icons"
+                                id="basic-addon1" style="color: #b6bec6;">lock</span></span>
+                    </div>
+                    <input type="password" class="form-control" placeholder="Password" name="upwd" aria-label="Username"
+                        aria-describedby="basic-addon1" style="background-color: #121212;border: 1px solid;">
+                </div>
+
+                <div style="height: 20px;"></div>
+                <button class="btn-register" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
